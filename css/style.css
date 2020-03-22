@@ -7571,3 +7571,18 @@ h6 {
   z-index: 10;
 
 }
+					
+#top_employer
+{
+	border: 1px solid red;
+	color: red !important;
+	margin: 3px;
+}	
+
+#top_employer:hover
+{
+  background: #F08080;
+  color: white !important;
+}
+             
+     
