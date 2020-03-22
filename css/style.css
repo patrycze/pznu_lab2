@@ -7519,6 +7519,16 @@ h6 {
   background-size: contain;
 }
 
+#ad6 {
+  margin: auto;
+  position: fixed;
+  bottom: 0px;
+  height: 100px;
+  background-color: #3f7f7f;
+  background-size: contain;
+  width: 100%;
+}
+
 @keyframes blink {
   50% {
     opacity: 0.0;
@@ -7554,4 +7564,10 @@ h6 {
   border: 4px solid #fff769;
   background: #fffeeb;
   color: black !important;
+}
+
+.modal-backdrop {
+
+  z-index: 10;
+
 }
