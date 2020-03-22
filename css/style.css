@@ -7571,3 +7571,26 @@ h6 {
   z-index: 10;
 
 }
+
+
+/*
+*
+* ==================================================
+* UNNECESSARY STYLE - JUST TO MAKE IT LOOKS NICE
+* ==================================================
+*
+*/
+
+#banner_modal_content {
+	background: #fffeeb;
+}
+
+#countdown {
+    font-weight: bold;
+	font-size: 40px;
+}
+
+#apply_now_button {
+
+}
+
