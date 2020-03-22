@@ -7520,10 +7520,17 @@ h6 {
 }
 
 #ad6 {
+  color: white;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  padding-left: 20rem;
+  padding-top: 2.5rem;
+  text-transform: uppercase;
   margin: auto;
   position: fixed;
   bottom: 0px;
   height: 100px;
+  font-size: 20px;
   background-color: #3f7f7f;
   background-size: contain;
   width: 100%;
@@ -7571,7 +7578,24 @@ h6 {
   z-index: 10;
 
 }
+					
+#top_employer
+{
+	border: 1px solid red;
+	color: red !important;
+	margin: 3px;
+}	
 
+#top_employer:hover
+{
+  background: #F08080;
+  color: white !important;
+}
+             
+     
+    font-weight: bold;
+	font-size: 40px;
+}
 
 /*
 *
