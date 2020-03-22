@@ -7492,9 +7492,48 @@ h6 {
 }
 
 #ad3 {
-  width: 69px;
+  margin-left: 2rem;
+  width: 150px;
+  height: 150px;
+  background-image: url(../img/ADS.jpg);
+  background-size: contain;
   position: absolute;
 }
+
+#ad4 {
+  margin-left: 2rem;
+  width: 150px;
+  height: 450px;
+  background-image: url(../img/ADS.jpg);
+  background-size: contain;
+  position: absolute;
+  right: 35px;
+}
+
+#ad5 {
+  margin: auto;
+  margin-bottom: 3rem;
+  width: 90%;
+  height: 150px;
+  background-image: url(../img/ADS.jpg);
+  background-size: contain;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+@-webkit-keyframes blink {
+  50% {
+    opacity: 0.0;
+  }
+}
+.blink {
+  animation: blink 1s step-start 0s infinite;
+  -webkit-animation: blink 1s step-start 0s infinite;
+}
+
 
 /*# sourceMappingURL=style.css.map */
 
