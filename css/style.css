@@ -7592,7 +7592,21 @@ h6 {
   color: white !important;
 }
              
-     
+     			
+#browse_job_location
+{
+	border: 1px solid red;
+	color: red !important;
+	margin: 3px;
+}	
+
+#browse_job_location:hover
+{
+  background: transparent;
+  color: red !important;
+}
+      
+	  
     font-weight: bold;
 	font-size: 40px;
 }
