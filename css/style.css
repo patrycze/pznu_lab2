@@ -7592,29 +7592,12 @@ h6 {
   color: white !important;
 }
              
-     
-    font-weight: bold;
-	font-size: 40px;
-}
-
-/*
-*
-* ==================================================
-* UNNECESSARY STYLE - JUST TO MAKE IT LOOKS NICE
-* ==================================================
-*
-*/
 
 #banner_modal_content {
-	background: #fffeeb;
+	background: #EEE8AA;
 }
 
 #countdown {
     font-weight: bold;
 	font-size: 40px;
 }
-
-#apply_now_button {
-
-}
-
