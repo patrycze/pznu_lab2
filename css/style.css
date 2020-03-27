@@ -7593,6 +7593,20 @@ h6 {
 }
              
 
+#browse_job_location
+{
+	border: 1px solid red;
+	color: red !important;
+	margin: 3px;
+}	
+
+#browse_job_location:hover
+{
+  background: transparent;
+  color: red !important;
+}
+      
+	  
 #banner_modal_content {
 	background: #EEE8AA;
 }
