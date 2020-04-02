@@ -7473,50 +7473,106 @@ h6 {
 
 
 #ad1 {
-  background-image: url(../img/ADS.jpg);
   background-size: contain;
   background-color: bisque;
   padding: 1.5rem;
-  font-family: "Helvetica", "Arial", sans-serif;
+  text-align: center;
 }
 
+#ad1 span {
+  font-size: 30px;
+}
+
+#ad1 button {
+  border-radius: 6px;
+  background-color: red;
+  color: white;
+}
+
+
 #ad2 {
-  background-image: url(../img/ADS.jpg);
-  background-size: contain;
   margin-top: 3rem;
   margin-left: 8rem;
   margin-right: 8rem;
-  background-color: bisque;
+  background-color: #F0E68C;
   padding: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+#ad2 p 
+{
   font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 30px;
+  color: black;
 }
 
 #ad3 {
   margin-left: 2rem;
-  width: 150px;
-  height: 150px;
-  background-image: url(../img/ADS.jpg);
+  width: 200px;
+  text-align: center;
+  background-color: #ADFF2F;
   background-size: contain;
   position: absolute;
+  border: 1px solid black;
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+#ad3 p 
+{
+  margin-top: 20px;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 30px;
+  color: black;
 }
 
 #ad4 {
   margin-left: 2rem;
-  width: 150px;
+  padding: 20px;
+  width: 250px;
   height: 450px;
-  background-image: url(../img/ADS.jpg);
+  background-color: #483D8B;
   background-size: contain;
   position: absolute;
   right: 35px;
+  text-align: center;
+  cursor: pointer;
 }
 
+#ad4 p 
+{
+  margin-top: 20px;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: white;
+}
+
+#ad4 img 
+{
+  margin-top: 20px;
+}
 #ad5 {
   margin: auto;
   margin-bottom: 3rem;
   width: 90%;
   height: 150px;
-  background-image: url(../img/ADS.jpg);
+  background-color: #F0FFFF;
   background-size: contain;
+  text-align: center;
+  border: 1px solid #2F4F4F;
+  cursor: pointer;
+}
+
+
+#ad5 p 
+{
+  margin-top: 20px;
+  font-family: "Helvetica", "Arial", sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+  color: black;
 }
 
 #ad6 {
