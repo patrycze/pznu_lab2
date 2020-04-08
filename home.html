@@ -969,23 +969,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     var data = [['x','y', 'isClick', 'time']]
 
 
-    $(function() {
-        var xCoord, yCoord;
-        $(document).on("mousemove", function(event) {
-            xCoord = event.pageX;
-            yCoord = event.pageY;
-            console.log("x: "+ xCoord+ ", y: "+ yCoord);
-            data.push([xCoord, yCoord, false, end()])
-        } );
-
-        $(document).on("click", function(event) {
-            xCoord = event.pageX;
-            yCoord = event.pageY;
-            console.log("CLICK x: "+ xCoord+ ", y: "+ yCoord, end());
-            data.push([xCoord, yCoord, true, end()])
-
-        } );
-    } );
+    // $(function() {
+    //     var xCoord, yCoord;
+    //     $(document).on("mousemove", function(event) {
+    //         xCoord = event.pageX;
+    //         yCoord = event.pageY;
+    //         console.log("x: "+ xCoord+ ", y: "+ yCoord);
+    //         data.push([xCoord, yCoord, false, end()])
+    //     } );
+    //
+    //     $(document).on("click", function(event) {
+    //         xCoord = event.pageX;
+    //         yCoord = event.pageY;
+    //         console.log("CLICK x: "+ xCoord+ ", y: "+ yCoord, end());
+    //         data.push([xCoord, yCoord, true, end()])
+    //
+    //     } );
+    // } );
 
 
     function offset(el) {
