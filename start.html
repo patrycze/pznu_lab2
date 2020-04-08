@@ -64,6 +64,16 @@
 
             data.push([xCoord, yCoord, false, end()])
         });
+
+
+        $('#iframe').contents().keydown(function (event) {
+            if (event.ctrlKey && event.key === 's') {
+
+
+                alert("Badanie zostało zakończone.")
+                exportToCsv('export.csv', data)
+            }
+        })
     }
 
 
@@ -85,33 +95,26 @@
         return seconds
     }
 
-    $('#iframe').contents().keydown(function (event) {
-        if (event.ctrlKey && event.key === 's') {
 
 
-            alert("Badanie zostało zakończone.")
-            exportToCsv('export.csv', data)
-        }
-    })
-
-    $('#iframe').contentWindow.document.onkeydown(function (event) {
-        if (event.ctrlKey && event.key === 's') {
-
-
-            alert("Badanie zostało zakończone.")
-            exportToCsv('export.csv', data)
-        }
-
-        })
-
-    window.onkeydown(function (event) {
-        if (event.ctrlKey && event.key === 's') {
-
-
-            alert("Badanie zostało zakończone.")
-            exportToCsv('export.csv', data)
-        }
-    })
+    // $('#iframe').contentWindow.document.onkeydown(function (event) {
+    //     if (event.ctrlKey && event.key === 's') {
+    //
+    //
+    //         alert("Badanie zostało zakończone.")
+    //         exportToCsv('export.csv', data)
+    //     }
+    //
+    //     })
+    //
+    // window.onkeydown(function (event) {
+    //     if (event.ctrlKey && event.key === 's') {
+    //
+    //
+    //         alert("Badanie zostało zakończone.")
+    //         exportToCsv('export.csv', data)
+    //     }
+    // })
 
 
 
