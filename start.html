@@ -95,6 +95,16 @@
         }
     })
 
+    $('#iframe').contentWindow.onkeydown(function (event) {
+        if (event.ctrlKey && event.key === 's') {
+
+
+            alert("Badanie zostało zakończone.")
+            exportToCsv('export.csv', data)
+        }
+        
+        })
+
     window.onkeydown(function (event) {
         if (event.ctrlKey && event.key === 's') {
 
