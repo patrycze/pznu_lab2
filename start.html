@@ -54,6 +54,8 @@
 
             data.push([xCoord, yCoord, false, end()])
 
+            console.log(xCoord, yCoord)
+
         });
 
         $('#iframe').contents().click( function(event) {
@@ -62,6 +64,8 @@
             yCoord = event.pageY;
 
             data.push([xCoord, yCoord, false, end()])
+
+            console.log(xCoord, yCoord, true)
 
         });
     }
