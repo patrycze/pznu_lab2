@@ -1,0 +1,168 @@
+<iframe id="iframe"
+        title="Inline Frame Example"
+        width="100%"
+        height="100%"
+        onload="loaded()"
+        src="index.html">
+</iframe>
+
+
+
+<script src="js/vendor/modernizr-3.5.0.min.js"></script>
+<script src="js/vendor/jquery-1.12.4.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/isotope.pkgd.min.js"></script>
+<script src="js/ajax-form.js"></script>
+<script src="js/waypoints.min.js"></script>
+<script src="js/jquery.counterup.min.js"></script>
+<script src="js/imagesloaded.pkgd.min.js"></script>
+<script src="js/scrollIt.js"></script>
+<script src="js/jquery.scrollUp.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/nice-select.min.js"></script>
+<script src="js/jquery.slicknav.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/gijgo.min.js"></script>
+
+
+
+<!--contact js-->
+<script src="js/contact.js"></script>
+<script src="js/jquery.ajaxchimp.min.js"></script>
+<script src="js/jquery.form.js"></script>
+<script src="js/jquery.validate.min.js"></script>
+<script src="js/mail-script.js"></script>
+
+
+<script src="js/main.js"></script>
+
+
+
+<script>
+
+    var data = [['x','y', 'isClick', 'time']]
+
+
+
+    function loaded() {
+
+        $('#iframe').contents().mousemove( function(event) {
+
+            xCoord = event.pageX;
+            yCoord = event.pageY;
+
+            data.push([xCoord, yCoord, false, end()])
+        });
+
+        $('#iframe').contents().click( function(event) {
+
+            xCoord = event.pageX;
+            yCoord = event.pageY;
+
+            data.push([xCoord, yCoord, false, end()])
+        });
+
+
+        $('#iframe').contents().keydown(function (event) {
+            if (event.ctrlKey && event.key === 's') {
+
+
+                alert("Badanie zostało zakończone.")
+                exportToCsv('export.csv', data)
+            }
+        })
+    }
+
+
+    var startTime
+
+    start()
+
+    function start() {
+        startTime = new Date();
+    };
+
+    function end() {
+        var endTime = new Date();
+        var timeDiff = endTime - startTime; //in ms
+
+        // get seconds
+        var seconds = Math.round(timeDiff);
+
+        return seconds
+    }
+
+
+
+    // $('#iframe').contentWindow.document.onkeydown(function (event) {
+    //     if (event.ctrlKey && event.key === 's') {
+    //
+    //
+    //         alert("Badanie zostało zakończone.")
+    //         exportToCsv('export.csv', data)
+    //     }
+    //
+    //     })
+    //
+    // window.onkeydown(function (event) {
+    //     if (event.ctrlKey && event.key === 's') {
+    //
+    //
+    //         alert("Badanie zostało zakończone.")
+    //         exportToCsv('export.csv', data)
+    //     }
+    // })
+
+
+
+
+
+    function exportToCsv(filename, rows) {
+        var processRow = function (row) {
+            var finalVal = '';
+            for (var j = 0; j < row.length; j++) {
+                var innerValue = row[j] === null ? '' : row[j].toString();
+                if (row[j] instanceof Date) {
+                    innerValue = row[j].toLocaleString();
+                };
+                var result = innerValue.replace(/"/g, '""');
+                if (result.search(/("|,|\n)/g) >= 0)
+                    result = '"' + result + '"';
+                if (j > 0)
+                    finalVal += ',';
+                finalVal += result;
+            }
+            return finalVal + '\n';
+        };
+
+        var csvFile = '';
+        for (var i = 0; i < rows.length; i++) {
+            csvFile += processRow(rows[i]);
+        }
+
+        var blob = new Blob([csvFile], { type: 'text/csv;charset=utf-8;' });
+        if (navigator.msSaveBlob) { // IE 10+
+            navigator.msSaveBlob(blob, filename);
+        } else {
+            var link = document.createElement("a");
+            if (link.download !== undefined) { // feature detection
+                // Browsers that support HTML5 download attribute
+                var url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                link.setAttribute("download", filename);
+                link.style.visibility = 'hidden';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }
+        }
+    }
+
+
+
+
+</script>
+
