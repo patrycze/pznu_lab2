@@ -43,6 +43,8 @@
 
 <script>
 
+    var data = [['x','y', 'isClick', 'time']]
+
 
 
     function loaded() {
@@ -54,7 +56,7 @@
 
             data.push([xCoord, yCoord, false, end()])
 
-            console.log(xCoord, yCoord)
+            console.log(data)
 
         });
 
@@ -65,7 +67,7 @@
 
             data.push([xCoord, yCoord, false, end()])
 
-            console.log(xCoord, yCoord, true)
+            console.log(data, true)
 
         });
     }
@@ -90,47 +92,8 @@
     }
 
 
-    var data = [['x','y', 'isClick', 'time']]
-
-
-
-    // $(function() {
-    //     var xCoord, yCoord;
-    //     $("#iframe").on("mousemove", function(event) {
-    //         xCoord = event.pageX;
-    //         yCoord = event.pageY;
-    //         console.log("x: "+ xCoord+ ", y: "+ yCoord);
-    //         data.push([xCoord, yCoord, false, end()])
-    //     } );
-    //
-    //
-    //
-    //         $("#iframe").on("click", function(event) {
-    //         xCoord = event.pageX;
-    //         yCoord = event.pageY;
-    //         console.log("CLICK x: "+ xCoord+ ", y: "+ yCoord, end());
-    //         data.push([xCoord, yCoord, true, end()])
-    //
-    //     } );
-    // } );
-
-
-    function offset(el) {
-
-
-
-        var rect = el.getBoundingClientRect(),
-            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-
-        return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
-    }
-
     document.addEventListener('keydown', function(event) {
         if (event.ctrlKey && event.key === 's') {
-            // alert('Undo!');
-
             exportToCsv('export.csv', data)
         }
     });
