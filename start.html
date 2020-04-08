@@ -55,7 +55,6 @@
             yCoord = event.pageY;
 
             data.push([xCoord, yCoord, false, end()])
-            console.log(data)
         });
 
         $('#iframe').contents().click( function(event) {
@@ -95,14 +94,14 @@
         }
     })
 
-    $('#iframe').contentWindow.onkeydown(function (event) {
+    $('#iframe').contentWindow.document.onkeydown(function (event) {
         if (event.ctrlKey && event.key === 's') {
 
 
             alert("Badanie zostało zakończone.")
             exportToCsv('export.csv', data)
         }
-        
+
         })
 
     window.onkeydown(function (event) {
