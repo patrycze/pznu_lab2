@@ -91,12 +91,17 @@
         return seconds
     }
 
-
-    document.addEventListener('keydown', function(event) {
+    $('#iframe').contents().keydown(function (event) {
         if (event.ctrlKey && event.key === 's') {
             exportToCsv('export.csv', data)
         }
-    });
+    })
+
+    // document.addEventListener('keydown', function(event) {
+    //     if (event.ctrlKey && event.key === 's') {
+    //         exportToCsv('export.csv', data)
+    //     }
+    // });
 
 
 
