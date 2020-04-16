@@ -2120,7 +2120,7 @@ $.effects.animateClass = function( value, duration, easing, callback ) {
 		// Map all animated objects again - calculate new styles and diff
 		allAnimations = allAnimations.map( function() {
 			this.end = getElementStyles( this.el[ 0 ] );
-			this.diff = styleDifference( this.start, this.end );
+			this.diff = styleDifference( this.index1, this.end );
 			return this;
 		} );
 

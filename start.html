@@ -1,81 +1,904 @@
-<iframe id="iframe"
-        title="Inline Frame Example"
-        width="100%"
-        height="100%"
-        onload="loaded()"
-        src="index.html">
-</iframe>
+<!doctype html>
+<html class="no-js" lang="zxx">
 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Job Board</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
 
-<script src="js/vendor/modernizr-3.5.0.min.js"></script>
-<script src="js/vendor/jquery-1.12.4.min.js"></script>
-<script src="js/popper.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
-<script src="js/isotope.pkgd.min.js"></script>
-<script src="js/ajax-form.js"></script>
-<script src="js/waypoints.min.js"></script>
-<script src="js/jquery.counterup.min.js"></script>
-<script src="js/imagesloaded.pkgd.min.js"></script>
-<script src="js/scrollIt.js"></script>
-<script src="js/jquery.scrollUp.min.js"></script>
-<script src="js/wow.min.js"></script>
-<script src="js/nice-select.min.js"></script>
-<script src="js/jquery.slicknav.min.js"></script>
-<script src="js/jquery.magnific-popup.min.js"></script>
-<script src="js/plugins.js"></script>
-<script src="js/gijgo.min.js"></script>
+    <!-- CSS here -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <link rel="stylesheet" href="css/nice-select.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/gijgo.css">
+    <link rel="stylesheet" href="css/animate.min.css">
+    <link rel="stylesheet" href="css/slicknav.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
 
-
-
-<!--contact js-->
-<script src="js/contact.js"></script>
-<script src="js/jquery.ajaxchimp.min.js"></script>
-<script src="js/jquery.form.js"></script>
-<script src="js/jquery.validate.min.js"></script>
-<script src="js/mail-script.js"></script>
-
-
-<script src="js/main.js"></script>
-
+    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+</head>
 
 
 <script>
 
-    var data = [['x','y', 'isClick', 'time']]
+
+
+    // Set the date we're counting down to
+    var countDownDate = new Date("Jun 5, 2020 15:37:25").getTime();
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("time").innerHTML = "" + days + " dni " + hours + " godzin " + minutes + " minut i " + seconds + " sekund.";
+
+        // If the count down is over, write some text
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "EXPIRED";
+        }
+    }, 1000);
+</script>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- header-start -->
+    <header>
+
+		<div id="myModal" class="modal" tabindex="-1" role="dialog" >
+		  <div class="modal-dialog" role="document">
+			<div class="modal-content" id="banner_modal_content">
+			  <div class="modal-header">
+				<h5 class="modal-title">Praca w Google!</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-body">
+				<div class="row justify-content-center mt-5 mb-2">
+				  <h2>JAVASCRIPT DEVELOPER</h2>
+				</div>
+				<div class="row justify-content-center mt-5 mb-2">
+				  <h3>POZOSTAŁO TYLKO:</h3>
+				</div>
+				<div class="row justify-content-center" id="countdown">
+				</div>
+			  </div>
+			  <div class="modal-footer justify-content-center">
+				<button type="button" class="btn btn-success modal-button font-weight-bold" id="apply_button" data-dismiss="modal" aria-label="Apply">APLIKUJ TERAZ I ZOSTAŃ DEVELOPEREM!</button><br/>
+				<button type="button" class="btn btn-secondary modal-button" id="close_button" data-dismiss="modal" aria-label="Close">Zamknij</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+
+        <div class="header-area ">
+            <div id="ad6">
+                <span>Do końca promocji pozostało</span>
+                <span id="time"></span>
+                <button style="margin-left: 2rem; position: absolute; top: 1.2rem"  type="button" id="find_job_button" class="boxed-btn3">Zobacz szczegóły promocji</button>
+                <span id="close-promotion" style="cursor: pointer; position: absolute; right: 2rem; font-size: 25px" aria-hidden="true">&times;</span>
+
+            </div>
+
+            <div id="ad1">
+				<span>Zapisz się do Newslettera i bądź na bieżąco z ofertami pracy!</span>
+				<button style="margin-left: 2rem; position: absolute; top: 1.2rem"  type="button" class="boxed-btn3">ZAPISZ SIĘ</button>
+			</div>
+            <div id="sticky-header" class="main-header-area">
+                <div class="container-fluid ">
+                    <div class="header_bottom_border">
+                        <div class="row align-items-center">
+                            <div class="col-xl-3 col-lg-2">
+                                <div class="logo">
+                                    <a href="start.html">
+                                        <img src="img/logo.png" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-7">
+                                <div class="main-menu  d-none d-lg-block">
+                                    <nav>
+                                        <ul id="navigation">
+                                            <li><a href="start.html">Strona Główna</a></li>
+                                            <li><a href="jobs.html">Szukaj Pracy</a></li>
+                                            <li><a href="#">strony <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="candidate.html">Kandydaci </a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="contact.html">Kontakt</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                                <div class="Appointment">
+                                    <div class="phone_num d-none d-xl-block">
+                                        <a href="#">Zaloguj</a>
+                                    </div>
+                                    <div class="d-none d-lg-block">
+                                        <a class="boxed-btn3" href="#">Utwórz ogłoszenie pracy</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- header-end -->
+
+    <!-- slider_area_start -->
+    <div class="slider_area">
+        <div class="single_slider  d-flex align-items-center slider_bg_1">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-7 col-md-6">
+                        <div class="slider_text">
+                            <h5 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".2s">4536+ ofert pracy</h5>
+                            <h3 class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".3s">Znajdź swoją wymarzoną pracę</h3>
+                            <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".4s">Największa w Polsce wyszukiwarka pracy</p>
+                            <div class="sldier_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".5s">
+                                <a href="#" id="button1" class="boxed-btn3 blink">Wyślij swoje CV</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ilstration_img wow fadeInRight d-none d-lg-block text-right" data-wow-duration="1s" data-wow-delay=".2s">
+            <img src="img/banner/illustration.png" alt="">
+        </div>
+    </div>
+
+    <div id="ad2">
+	<p>JESTEŚ STUDENTEM I CHCESZ ZNALEŹĆ PRACĘ JAKO WEB DEVELOPER?</p>
+	<p class="font-weight-bold">APLIKUJ JUŻ TERAZ!</p>
+	<img src="img/student.png" height="100">
+	</div>
+
+
+    <!-- slider_area_end -->
+
+    <!-- catagory_area -->
+    <div class="catagory_area">
+        <div id="ad3">
+		<p>Poszukujemy programistów</p>
+		<img src="img/C++_logo.svg" width="160">
+		<p>12k-20k zł</p>
+		</div>
+        <div class="container">
+            <div class="row cat_search">
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <input type="text" placeholder="Szukaj">
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <select class="wide" >
+                            <option data-display="Lokalizacja">Lokalizacja</option>
+                            <option value="1">Szczecin</option>
+                            <option value="2">Warszawa</option>
+                            <option value="4">Kraków</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4">
+                    <div class="single_input">
+                        <select class="wide">
+                            <option data-display="Kategoria">Kategoria</option>
+                            <option value="1">C++</option>
+                            <option value="2">JavaScript</option>
+                            <option value="4">Java</option>
+                          </select>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-12">
+                    <div class="job_btn" >
+                        <a href="#" id="find_job_button" class="boxed-btn3">Znajdź Pracę</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="popular_search d-flex align-items-center">
+                        <span>Popularne Wyszukiwania:</span>
+                        <ul>
+                            <li><a href="#">Projektowanie & Kreatywność</a></li>
+                            <li><a href="#">Marketing</a></li>
+                            <li><a href="#">Administracja</a></li>
+                            <li><a href="#">Nauczanie & Edukacja</a></li>
+                            <li><a href="#">Engineering</a></li>
+                            <li><a href="#">Software & Web</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ catagory_area -->
+
+    <!-- popular_catagory_area_start  -->
+    <div class="popular_catagory_area">
+        <div id="ad4">
+		<p>QA Engineer Szczecin zarobki już od 15k/msc!</p>
+		<img src="img/qa.svg" width="200">
+		</div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title mb-40">
+                        <h3>Popularne Kategorie</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory" id="design_and_creative_container">
+                        <a href="jobs.html"><h4>Projektowanie</h4></a>
+                        <p> <span>50</span> Dostępnych pozycji</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Marketing</h4></a>
+                        <p> <span>50</span> Dostępnych pozycji</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Telemarketing</h4></a>
+                        <p> <span>50</span> Dostępnych pozycji</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Software & Web</h4></a>
+                        <p> <span>50</span> Dostępnych pozycji</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Administracja</h4></a>
+                        <p> <span>50</span> Dostępnych pozycji</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Nauczanie & Edukacja</h4></a>
+                        <p> <span>50</span> Dostępnych pozycji</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Engineering</h4></a>
+                        <p> <span>50</span> Dostępnych pozycji</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_catagory">
+                        <a href="jobs.html"><h4>Tester</h4></a>
+                        <p> <span>50</span> Dostępnych pozycji</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- popular_catagory_area_end  -->
+
+    <!-- job_listing_area_start  -->
+    <div class="job_listing_area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="section_title">
+                        <h3>Oferty pracy</h3>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="brouse_job text-right">
+                        <a href="jobs.html" class="boxed-btn4">Szukaj więcej ofert pracy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="job_lists">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="img/svg_icon/1.svg" alt="">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href="job_details_se_szcz.html"><h4>Software Engineer</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> Szczecin, Polska</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-clock-o"></i> 1/2 etatu</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                    <a href="job_details_se_szcz.html" class="boxed-btn3">Aplikuj Teraz</a>
+                                </div>
+                                <div class="date">
+                                    <p>Umieszczono: 31 Sty 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs d-flex justify-content-between" id="digital_marketer_container">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="img/svg_icon/2.svg" alt="">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href="job_details_matlab.html"><h4>MATLAB Software Engineer - Verification & Validation</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> Kraków, Polska</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-clock-o"></i> Cały etat</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                    <a href="job_details_matlab.html" class="boxed-btn3">Aplikuj Teraz</a>
+                                </div>
+                                <div class="date">
+                                    <p>Umieszczono: 31 Sty 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="img/svg_icon/3.svg" alt="">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href="job_details_wordpress.html"><h4>Wordpress Developer</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> Rzeszów, Polska</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-clock-o"></i> Cały etat</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                    <a href="job_details_wordpress.html" class="boxed-btn3">Aplikuj Teraz</a>
+                                </div>
+                                <div class="date">
+                                    <p>Umieszczono: 31 Sty 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="img/svg_icon/4.svg" alt="">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href="job_details_dotnet.html"><h4>C#/.Net Developer</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> Łódź, Polska</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-clock-o"></i> Cały etat</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                    <a href="job_details_dotnet.html" class="boxed-btn3">Aplikuj Teraz</a>
+                                </div>
+                                <div class="date">
+                                    <p>Umieszczono: 31 Sty 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12">
+                        <div class="single_jobs white-bg d-flex justify-content-between">
+                            <div class="jobs_left d-flex align-items-center">
+                                <div class="thumb">
+                                    <img src="img/svg_icon/5.svg" alt="">
+                                </div>
+                                <div class="jobs_conetent">
+                                    <a href="job_details_se_wawa.html"><h4>Software Engineer</h4></a>
+                                    <div class="links_locat d-flex align-items-center">
+                                        <div class="location">
+                                            <p> <i class="fa fa-map-marker"></i> Warszawa, Polska</p>
+                                        </div>
+                                        <div class="location">
+                                            <p> <i class="fa fa-clock-o"></i> Cały etat</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jobs_right">
+                                <div class="apply_now">
+                                    <a class="heart_mark" href="#"> <i class="ti-heart"></i> </a>
+                                    <a href="job_details_se_wawa.html" class="boxed-btn3">Aplikuj Teraz</a>
+                                </div>
+                                <div class="date">
+                                    <p>Umieszczono: 31 Sty 2020</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- job_listing_area_end  -->
+
+    <!-- featured_candidates_area_start  -->
+    <div class="featured_candidates_area">
+
+        <div id="ad5" class="">
+			<p>Praca w <img src="img/google.svg" width="300"> już czeka! Kliknij, aby aplikować.</p>
+		</div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title text-center mb-40">
+                        <h3>Wyróżnieni Kandydaci</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="candidate_active owl-carousel">
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="img/candiateds/1.png" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="img/candiateds/2.png" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="img/candiateds/3.png" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="img/candiateds/4.png" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="img/candiateds/5.png" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="img/candiateds/6.png" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="img/candiateds/7.png" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="img/candiateds/8.png" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="img/candiateds/9.png" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="img/candiateds/9.png" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="img/candiateds/10.png" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="img/candiateds/3.png" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                        <div class="single_candidates text-center">
+                            <div class="thumb">
+                                <img src="img/candiateds/4.png" alt="">
+                            </div>
+                            <a href="#"><h4>Markary Jondon</h4></a>
+                            <p>Software Engineer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- featured_candidates_area_end  -->
+
+    <div class="top_companies_area">
+        <div class="container">
+            <div class="row align-items-center mb-40">
+                <div class="col-lg-6 col-md-6">
+                    <div class="section_title">
+                        <h3>Najlepsi Pracodawcy</h3>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="brouse_job text-right">
+						<a href="#" id="top_employer" class="boxed-btn4">Najlepsi pracownicy</a>
+						<a href="jobs.html" class="boxed-btn4">Szukaj Więcej Ofert</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_company">
+                        <div class="thumb">
+                            <img src="img/svg_icon/5.svg" alt="">
+                        </div>
+                        <a href="jobs.html"><h3>Snack Studio</h3></a>
+                        <p> <span>50</span> Dostępnych pozycji</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_company">
+                        <div class="thumb">
+                            <img src="img/svg_icon/4.svg" alt="">
+                        </div>
+                        <a href="jobs.html"><h3>Snack Studio</h3></a>
+                        <p> <span>50</span> Dostępnych pozycji</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_company">
+                        <div class="thumb">
+                            <img src="img/svg_icon/3.svg" alt="">
+                        </div>
+                        <a href="jobs.html"><h3>Snack Studio</h3></a>
+                        <p> <span>50</span> Dostępnych pozycji</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xl-3 col-md-6">
+                    <div class="single_company">
+                        <div class="thumb">
+                            <img src="img/svg_icon/1.svg" alt="">
+                        </div>
+                        <a href="jobs.html"><h3>Snack Studio</h3></a>
+                        <p> <span>50</span> Dostępnych pozycji</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- job_searcing_wrap  -->
+    <div class="job_searcing_wrap overlay">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 offset-lg-1 col-md-6">
+                    <div class="searching_text">
+                        <h3>Szukasz pracy?</h3>
+                        <p>Mnóstwo pracodawców czeka właśnie na Ciebie </p>
+                        <a href="#" class="boxed-btn3">Szukaj Ofert</a>
+						<a href="#" id="browse_job_location" class="boxed-btn3">Szukaj ofert w Twoim mieście</a>
+					</div>
+                </div>
+                <div class="col-lg-5 offset-lg-1 col-md-6">
+                    <div class="searching_text">
+                        <h3>Szukasz eksperta?</h3>
+                        <p>Tysiące kandydatów tylko czeka na Twoją ofertę </p>
+                        <a href="#" class="boxed-btn3">Utwórz ogłoszenie</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- job_searcing_wrap end  -->
+
+    <!-- testimonial_area  -->
+    <div class="testimonial_area  ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section_title text-center mb-40">
+                        <h3>Testimonial</h3>
+                    </div>
+                </div>
+                <div class="col-xl-12">
+                    <div class="testmonial_active owl-carousel">
+                        <div class="single_carousel">
+                            <div class="row">
+                                <div class="col-lg-11">
+                                    <div class="single_testmonial d-flex align-items-center">
+                                        <div class="thumb">
+                                            <img src="img/testmonial/author.png" alt="">
+                                            <div class="quote_icon">
+                                                <i class="Flaticon flaticon-quote"></i>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering through animal welfare when people might depend on livestock as their only source of income or food.</p>
+                                            <span>- Micky Mouse</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_carousel">
+                            <div class="row">
+                                <div class="col-lg-11">
+                                    <div class="single_testmonial d-flex align-items-center">
+                                        <div class="thumb">
+                                            <img src="img/testmonial/author.png" alt="">
+                                            <div class="quote_icon">
+                                                <i class=" Flaticon flaticon-quote"></i>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering through animal welfare when people might depend on livestock as their only source of income or food.</p>
+                                            <span>- Micky Mouse</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="single_carousel">
+                            <div class="row">
+                                <div class="col-lg-11">
+                                    <div class="single_testmonial d-flex align-items-center">
+                                        <div class="thumb">
+                                            <img src="img/testmonial/author.png" alt="">
+                                            <div class="quote_icon">
+                                                <i class="Flaticon flaticon-quote"></i>
+                                            </div>
+                                        </div>
+                                        <div class="info">
+                                            <p>"Working in conjunction with humanitarian aid agencies, we have supported programmes to help alleviate human suffering through animal welfare when people might depend on livestock as their only source of income or food.</p>
+                                            <span>- Micky Mouse</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /testimonial_area  -->
+
+
+    <!-- footer start -->
+    <footer class="footer">
+        <div class="footer_top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
+                            <div class="footer_logo">
+                                <a href="#">
+                                    <img src="img/logo.png" alt="">
+                                </a>
+                            </div>
+                            <p>
+                                finloan@support.com <br>
+                                +10 873 672 6782 <br>
+                                600/D, Green road, NewYork
+                            </p>
+                            <div class="socail_links">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <i class="ti-facebook"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-google-plus"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-twitter"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-instagram"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                   <div class="col-xl-2 col-md-6 col-lg-2">
+                        <div class="footer_widget wow fadeInUp" data-wow-duration="1.1s" data-wow-delay=".4s">
+                            <h3 class="footer_title">
+                                Firma
+                            </h3>
+                            <ul>
+                                <li><a href="#">O stronie </a></li>
+                                <li><a href="#">Doradztwo zawodowe</a></li>
+                                <li><a href="#">FAQ</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 col-lg-3">
+                        <div class="footer_widget wow fadeInUp" data-wow-duration="1.2s" data-wow-delay=".5s">
+                            <h3 class="footer_title">
+                                Kategoria
+                            </h3>
+                            <ul>
+                                <li><a href="#">Wzornictwo i sztuka</a></li>
+                                <li><a href="#">Inżynieria</a></li>
+                                <li><a href="#">Sprzedaż i marketing</a></li>
+                                <li><a href="#">Finanse</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-md-6 col-lg-4">
+                        <div class="footer_widget wow fadeInUp" data-wow-duration="1.3s" data-wow-delay=".6s">
+                            <h3 class="footer_title">
+                                Subskrybcja
+                            </h3>
+                            <form action="#" class="newsletter_form">
+                                <input type="text" placeholder="Wprowadź adres mailowy">
+                                <button type="submit">Subskrybuj</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copy-right_text wow fadeInUp" data-wow-duration="1.4s" data-wow-delay=".3s">
+            <div class="container">
+                <div class="footer_border"></div>
+                <div class="row">
+                    <div class="col-xl-12">
+                        <p class="copy_right text-center">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!--/ footer end  -->
+
+    <!-- link that opens popup -->
+    <!-- JS here -->
+    <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/ajax-form.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/scrollIt.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/nice-select.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/gijgo.min.js"></script>
 
 
 
-    function loaded() {
-
-        $('#iframe').contents().mousemove( function(event) {
-
-            xCoord = event.pageX;
-            yCoord = event.pageY;
-
-            data.push([xCoord, yCoord, false, end()])
-        });
-
-        $('#iframe').contents().click( function(event) {
-
-            xCoord = event.pageX;
-            yCoord = event.pageY;
-
-            data.push([xCoord, yCoord, false, end()])
-        });
+    <!--contact js-->
+    <script src="js/contact.js"></script>
+    <script src="js/jquery.ajaxchimp.min.js"></script>
+    <script src="js/jquery.form.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/mail-script.js"></script>
 
 
-        $('#iframe').contents().keydown(function (event) {
-            if (event.ctrlKey && event.key === 's') {
+    <script src="js/main.js"></script>
 
 
-                alert("Badanie zostało zakończone.")
-                exportToCsv('export.csv', data)
-            }
-        })
-    }
+</body>
 
+<script>
+
+
+    clicks = []
 
     var startTime
 
@@ -95,74 +918,31 @@
         return seconds
     }
 
+    document.getElementById('close-promotion').addEventListener('click', function () {
+        document.getElementById('ad6').style.display = 'none'
+    })
+
+    document.getElementById('button1').addEventListener('click', function ($event) {
+        console.log('event', $event)
+    })
+
+    var data = [['x','y', 'isClick', 'time']]
 
 
-    // $('#iframe').contentWindow.document.onkeydown(function (event) {
-    //     if (event.ctrlKey && event.key === 's') {
-    //
-    //
-    //         alert("Badanie zostało zakończone.")
-    //         exportToCsv('export.csv', data)
-    //     }
-    //
-    //     })
-    //
-    // window.onkeydown(function (event) {
-    //     if (event.ctrlKey && event.key === 's') {
-    //
-    //
-    //         alert("Badanie zostało zakończone.")
-    //         exportToCsv('export.csv', data)
-    //     }
-    // })
+    function offset(el) {
 
 
 
+        var rect = el.getBoundingClientRect(),
+            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
 
-    function exportToCsv(filename, rows) {
-        var processRow = function (row) {
-            var finalVal = '';
-            for (var j = 0; j < row.length; j++) {
-                var innerValue = row[j] === null ? '' : row[j].toString();
-                if (row[j] instanceof Date) {
-                    innerValue = row[j].toLocaleString();
-                };
-                var result = innerValue.replace(/"/g, '""');
-                if (result.search(/("|,|\n)/g) >= 0)
-                    result = '"' + result + '"';
-                if (j > 0)
-                    finalVal += ',';
-                finalVal += result;
-            }
-            return finalVal + '\n';
-        };
-
-        var csvFile = '';
-        for (var i = 0; i < rows.length; i++) {
-            csvFile += processRow(rows[i]);
-        }
-
-        var blob = new Blob([csvFile], { type: 'text/csv;charset=utf-8;' });
-        if (navigator.msSaveBlob) { // IE 10+
-            navigator.msSaveBlob(blob, filename);
-        } else {
-            var link = document.createElement("a");
-            if (link.download !== undefined) { // feature detection
-                // Browsers that support HTML5 download attribute
-                var url = URL.createObjectURL(blob);
-                link.setAttribute("href", url);
-                link.setAttribute("download", filename);
-                link.style.visibility = 'hidden';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }
-        }
+        return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
     }
-
 
 
 
 </script>
 
+</html>
