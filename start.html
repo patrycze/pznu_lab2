@@ -95,6 +95,11 @@
         return seconds
     }
 
+    function goToPage(addr) {
+        console.log('goto')
+        $('iframe').attr('src', addr)
+    }
+
 
 
     // $('#iframe').contentWindow.document.onkeydown(function (event) {
